@@ -35,7 +35,6 @@ function showDashboard() {
 
   // Quick buttons (only for roles that can use them)
   const buttons = [
-    { href: 'sales.html',    label: 'Sell items', style: 'btn'  },
     { href: 'stock-in.html', label: 'Stock in',   style: 'btn2' }
   ];
   document.getElementById('quick-buttons').innerHTML = buttons
