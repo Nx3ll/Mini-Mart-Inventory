@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini-mart — Stock in</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <span class="brand">Mini-mart</span>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="sales.html">Sales</a>
+        <a href="stock-in.html" class="active">Stock In</a>
+        <a href="reorder.html">Reorder</a>
+        <a href="reports.html">Reports</a>
+        <a href="activity-log.html">Activity Log</a>
+        <a href="eload.html">E-load / GCash</a>
+      </nav>
+    </div>
+    <div class="nav-right" id="userDisplay">Ana · Cashier</div>
+  </header>
+
+  <main class="container">
+    <h1>Stock in</h1>
+
+    <div class="stockin-form-row">
+      <!--ITEM-->
+      <div>
+        <label class="field-label" for="itemSelect">ITEM</label>
+        <select id="itemSelect"></select>
+      </div>
+
+      <!-- QUANTITY RECEIVED -->
+      <div>
+        <label class="field-label" for="qtyInput">QUANTITY RECEIVED</label>
+        <input type="number" id="qtyInput" min="1" value="1">
+      </div>
+
+      <!-- SUPPLIER -->
+      <div>
+        <label class="field-label" for="supplierSelect">SUPPLIER</label>
+        <select id="supplierSelect"></select>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="addDeliveryBtn">+ Add to delivery</button>
+
+    <div style="margin-top: 28px;">
+      <h2>This delivery</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ITEM</th>
+            <th>QTY</th>
+            <th>UNIT</th>
+            <th>SUPPLIER</th>
+            <th>EXPIRY</th>
+          </tr>
+        </thead>
+        <tbody id="deliveryTableBody">
+          <tr>
+            <td colspan="5" class="empty-msg">No items queued for delivery.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <button type="button" class="btn btn-primary" id="confirmDeliveryBtn">Confirm delivery</button>
+    </div>
+
+    <div id="statusMsg" class="status-msg"></div>
+  </main>
+
+  <script src="stock-in.js"></script>
+</body>
+</html>

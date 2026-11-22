@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini-mart — Reports</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <span class="brand">Mini-mart</span>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="sales.html">Sales</a>
+        <a href="stock-in.html">Stock In</a>
+        <a href="reorder.html">Reorder</a>
+        <a href="reports.html" class="active">Reports</a>
+        <a href="activity-log.html">Activity Log</a>
+        <a href="eload.html">E-load / GCash</a>
+      </nav>
+    </div>
+    <div class="nav-right" id="userDisplay">Ana · Cashier</div>
+  </header>
+
+  <main class="container">
+    <h1>Reports</h1>
+
+    <div class="filter-tabs">
+      <button type="button" class="btn btn-primary filter-btn" data-period="today">Today</button>
+      <button type="button" class="btn filter-btn" data-period="week">This week</button>
+      <button type="button" class="btn filter-btn" data-period="month">This month</button>
+    </div>
+
+    <div class="reports-grid">
+      <div>
+        <h2>Best sellers</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>SOLD</th>
+            </tr>
+          </thead>
+          <tbody id="bestSellersBody"></tbody>
+        </table>
+      </div>
+
+      <div>
+        <h2>Slow movers</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>SOLD</th>
+            </tr>
+          </thead>
+          <tbody id="slowMoversBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="total-sales-box">
+      <div class="field-label">TOTAL SALES</div>
+      <div class="total-sales-amount" id="totalSalesAmount">₱0</div>
+    </div>
+  </main>
+
+  <script src="reports.js"></script>
+</body>
+</html>
