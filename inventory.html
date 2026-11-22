@@ -3,142 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Mini-mart - Inventory</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  <header class="navbar">
-    <div class="nav-left">
-      <span class="brand">Mini-mart</span>
-      <nav class="nav-links">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="inventory.html" class="active">Inventory</a>
-        <a href="sales.html">Sales</a>
-        <a href="stock-in.html">Stock in</a>
-        <a href="reorder.html">Reorder</a>
-        <a href="suppliers.html">Suppliers</a>
-        <a href="reports.html">Reports</a>
-        <a href="eload.html">E-load / GCash</a>
-        <a href="activity-log.html">Activity log</a>
-      </nav>
-    </div>
-    <span id="roleDisplay">Role: Cashier</span>
-  </header>
-  <main class="inventoryPage">
-    <div class="inventoryHeader">
-      <h1 class="inventory">Inventory</h1>
-      <button class="addITEM" id="openAddItem">+ Add item</button>
-    </div>
-    <div class="invensearch-row">
-      <div class="filterGroup">
-        <label class="invensearch">SEARCH ITEM</label>
-        <input type="text" class="itemsearch i" placeholder="">
-      </div>
-      <div class="filterGroup">
-        <label class="invencategory">CATEGORY</label>
-        <select class="itemsearch c" id="categoryFilter">
-          <option value=""> </option>
-          <option value="Drinks">Drinks</option>
-          <option value="Canned Goods">Canned Goods</option>
-          <option value="Fragile/Perishable">Fragile/Perishable</option>
-          <option value="Utilities">Utilities</option>
-          <option value="Cosmetics">Cosmetics</option>
-          <option value="Processed Foods">Processed Foods</option>
-          <option value="Frozen Goods">Frozen Goods</option>
-        </select>
-      </div>
-      <div class="filterGroup">
-        <label class="invenstatus">STATUS</label>
-        <select class="itemsearch s" id="statusFilter">
-          <option value=""> </option>
-          <option value="Available">Available</option>
-          <option value="Low Stock">Low Stock</option>
-          <option value="Out of Stock">Out of Stock</option>
-        </select>
-      </div>
-    </div>
-    <div class="tableContainer">
-      <table class="itemlist" id="inventoryTable">
-        <thead>
-          <tr>
-            <td class="item">ITEM</td>
-            <td class="category">CATEGORY</td>
-            <td class="unit">UNIT</td>
-            <td class="price">PRICE</td>
-            <td class="stock">STOCK</td>
-            <td class="status">STATUS</td>
-            <td class="edit"></td>
-          </tr>
-        </thead>
-        <tbody id="inventoryBody">
-        </tbody>
-      </table>
-    </div>
-  </main>
-  <div class="addItemOverlay" id="addItemOverlay">
-    <div class="addItemForm">
-      <h1>Add item</h1>
-      <form id="addItemForm">
-        <div class="formGrid">
-          <div class="formGroup">
-            <label>ITEM NAME</label>
-            <input type="text" id="itemName" required>
-          </div>
-          <div class="formGroup">
-            <label>CATEGORY</label>
-            <select id="itemCategory" required>
-              <option value="">Select Category</option>
-              <option>Drinks</option>
-              <option>Canned Goods</option>
-              <option>Fragile/Perishable</option>
-              <option>Utilities</option>
-              <option>Cosmetics</option>
-              <option>Processed Foods</option>
-              <option>Frozen Goods</option>
-            </select>
-          </div>
-          <div class="formGroup">
-            <label>UNIT (PIECE / PACK / BOX)</label>
-            <input type="text" id="itemUnit" required>
-          </div>
-          <div class="formGroup">
-            <label>COST PRICE</label>
-            <input type="number" id="costPrice" min="0" step="0.01" required>
-          </div>
-          <div class="formGroup">
-            <label>SELLING PRICE</label>
-            <input type="number" id="sellingPrice" min="0" step="0.01" required>
-          </div>
-          <div class="formGroup">
-            <label>CURRENT STOCK</label>
-            <input type="number" id="currentStock" min="0" step="1" required>
-          </div>
-          <div class="formGroup">
-            <label>REORDER LEVEL</label>
-            <input type="number" id="reorderLevel" min="0" step="1" required>
-          </div>
-          <div class="formGroup">
-            <label>EXPIRY DATE</label>
-            <input type="date" id="expiryDate">
-          </div>
-          <div class="formGroup">
-            <label>SUPPLIER</label>
-            <input type="text" id="itemSupplier">
-          </div>
-        </div>
-        <div class="formButtons">
-          <button type="submit" class="saveItem">Save item</button>
-          <button type="button" class="cancelItem" id="cancelAddItem">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <script src="inventory.js"></script>
-</body>
-
-</html>
-<style>
+  <title>Inventory · Mini-mart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
   * {
     box-sizing: border-box;
   }
@@ -270,7 +138,7 @@
   .addItemOverlay {
     display: none;
     position: fixed;
-    top: 44px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -381,3 +249,124 @@
     }
   }
 </style>
+</head>
+
+<body>
+  <!-- Menu (filled in by app.js) -->
+  <nav class="nav" id="nav"></nav>
+  <main class="inventoryPage">
+    <div class="inventoryHeader">
+      <h1 class="inventory">Inventory</h1>
+      <button class="addITEM" id="openAddItem">+ Add item</button>
+    </div>
+    <div class="invensearch-row">
+      <div class="filterGroup">
+        <label class="invensearch">SEARCH ITEM</label>
+        <input type="text" class="itemsearch i" placeholder="">
+      </div>
+      <div class="filterGroup">
+        <label class="invencategory">CATEGORY</label>
+        <select class="itemsearch c" id="categoryFilter">
+          <option value=""> </option>
+          <option value="Drinks">Drinks</option>
+          <option value="Canned Goods">Canned Goods</option>
+          <option value="Fragile/Perishable">Fragile/Perishable</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Cosmetics">Cosmetics</option>
+          <option value="Processed Foods">Processed Foods</option>
+          <option value="Frozen Goods">Frozen Goods</option>
+        </select>
+      </div>
+      <div class="filterGroup">
+        <label class="invenstatus">STATUS</label>
+        <select class="itemsearch s" id="statusFilter">
+          <option value=""> </option>
+          <option value="Available">Available</option>
+          <option value="Low Stock">Low Stock</option>
+          <option value="Out of Stock">Out of Stock</option>
+        </select>
+      </div>
+    </div>
+    <div class="tableContainer">
+      <table class="itemlist" id="inventoryTable">
+        <thead>
+          <tr>
+            <td class="item">ITEM</td>
+            <td class="category">CATEGORY</td>
+            <td class="unit">UNIT</td>
+            <td class="price">PRICE</td>
+            <td class="stock">STOCK</td>
+            <td class="status">STATUS</td>
+            <td class="edit"></td>
+          </tr>
+        </thead>
+        <tbody id="inventoryBody">
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <div class="addItemOverlay" id="addItemOverlay">
+    <div class="addItemForm">
+      <h1>Add item</h1>
+      <form id="addItemForm">
+        <div class="formGrid">
+          <div class="formGroup">
+            <label>ITEM NAME</label>
+            <input type="text" id="itemName" required>
+          </div>
+          <div class="formGroup">
+            <label>CATEGORY</label>
+            <select id="itemCategory" required>
+              <option value="">Select Category</option>
+              <option>Drinks</option>
+              <option>Canned Goods</option>
+              <option>Fragile/Perishable</option>
+              <option>Utilities</option>
+              <option>Cosmetics</option>
+              <option>Processed Foods</option>
+              <option>Frozen Goods</option>
+            </select>
+          </div>
+          <div class="formGroup">
+            <label>UNIT (PIECE / PACK / BOX)</label>
+            <input type="text" id="itemUnit" required>
+          </div>
+          <div class="formGroup">
+            <label>COST PRICE</label>
+            <input type="number" id="costPrice" min="0" step="0.01" required>
+          </div>
+          <div class="formGroup">
+            <label>SELLING PRICE</label>
+            <input type="number" id="sellingPrice" min="0" step="0.01" required>
+          </div>
+          <div class="formGroup">
+            <label>CURRENT STOCK</label>
+            <input type="number" id="currentStock" min="0" step="1" required>
+          </div>
+          <div class="formGroup">
+            <label>REORDER LEVEL</label>
+            <input type="number" id="reorderLevel" min="0" step="1" required>
+          </div>
+          <div class="formGroup">
+            <label>EXPIRY DATE</label>
+            <input type="date" id="expiryDate">
+          </div>
+          <div class="formGroup">
+            <label>SUPPLIER</label>
+            <input type="text" id="itemSupplier">
+          </div>
+        </div>
+        <div class="formButtons">
+          <button type="submit" class="saveItem">Save item</button>
+          <button type="button" class="cancelItem" id="cancelAddItem">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/inventory.js"></script>
+</body>
+
+</html>

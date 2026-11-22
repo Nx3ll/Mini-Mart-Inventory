@@ -2,58 +2,10 @@
 <html lang="en">
 <head>
  <meta charset="UTF-8">
- <title>Mini-mart - Reorder</title>
- <link rel="stylesheet" href="style.css">
-</head>
-<body>
- <header class="navbar">
-  <div class="nav-left">
-   <span class="brand">Mini-mart</span>
-   <nav class="nav-links">
-    <a href="dashboard.html">Dashboard</a>
-    <a href="inventory.html">Inventory</a>
-    <a href="sales.html">Sales</a>
-    <a href="stock-in.html">Stock in</a>
-    <a href="reorder.html" class="active">Reorder</a>
-    <a href="suppliers.html">Suppliers</a>
-    <a href="reports.html">Reports</a>
-    <a href="eload.html">E-load / GCash</a>
-    <a href="activity-log.html">Activity log</a>
-   </nav>
-  </div>
-  <div class="nav-right">
-   <select id="branchSelect" class="nav-branch-select" title="Active Store Branch">
-    <option value="Main Branch">Main Branch</option>
-    <option value="Branch 2 - North">Branch 2 - North</option>
-   </select>
-   <span id="roleDisplay">Role: Owner / Manager</span>
-  </div>
- </header>
-
-<main class="reorderPage">
-<div class="reorderHeader">
-<h1>Reorder list</h1>
-<button id="printList">Print list</button>
-</div>
-<p class="description">ITEMS AT OR BELOW THEIR REORDER LEVEL</p>
-
-<table class="reorderTable">
-<thead>
-<tr>
- <th>ITEM</th>
- <th>LEFT</th>
- <th>REORDER AT</th>
- <th>SUPPLIER</th>
- <th>STATUS</th>
-</tr>
-</thead>
-<tbody id="reorderBody"></tbody>
-</table>
-</main>
-<script src="reorder.js"></script>
-</body>
-</html>
-<style>
+ <title>Reorder · Mini-mart</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
 
 * {
 box-sizing: border-box;
@@ -153,4 +105,61 @@ color: grey;
 text-align: center;
 }
 
+.reorderActions {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+@media (max-width: 800px) {
+.reorderHeader {
+flex-wrap: wrap;
+gap: 10px;
+}
+}
+
+@media print {
+.reorderActions {
+display: none;
+}
+}
 </style>
+</head>
+<body>
+ <!-- Menu (filled in by app.js) -->
+  <nav class="nav" id="nav"></nav>
+
+<main class="reorderPage">
+<div class="reorderHeader">
+<h1>Reorder list</h1>
+<div class="reorderActions">
+<select id="branchSelect" class="nav-branch-select" title="Active Store Branch">
+<option value="Main Branch">Main Branch</option>
+<option value="Branch 2 - North">Branch 2 - North</option>
+</select>
+<button id="printList">Print list</button>
+</div>
+</div>
+<p class="description">ITEMS AT OR BELOW THEIR REORDER LEVEL</p>
+
+<div class="wrap">
+<table class="reorderTable wide">
+<thead>
+<tr>
+ <th>ITEM</th>
+ <th>LEFT</th>
+ <th>REORDER AT</th>
+ <th>SUPPLIER</th>
+ <th>STATUS</th>
+</tr>
+</thead>
+<tbody id="reorderBody"></tbody>
+</table>
+</div>
+</main>
+<!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/reorder.js"></script>
+</body>
+</html>
