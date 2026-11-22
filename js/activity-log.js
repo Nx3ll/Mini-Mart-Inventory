@@ -35,6 +35,6 @@ function niceTime(isoText) {
 
 // Show name and role
 function whoText(username) {
-  const user = USERS.find(function (u) { return u.username === username; });
+  const user = users().find(function (u) { return u.username === username; });
   return user ? esc(user.name) + ' (' + ROLES[user.role] + ')' : esc(username);
 }

@@ -18,7 +18,7 @@ function englishGreeting() {
 function showDashboard() {
   // Greeting and today's date
   document.getElementById('greeting').textContent =
-    greeting() + ' / ' + englishGreeting() + ', ' + currentUser().name + '! ' +
+    englishGreeting() + ', ' + currentUser().name + '! ' +
     new Date().toLocaleDateString('en-PH', { weekday: 'long', month: 'long', day: 'numeric' });
 
   const allItems = items();

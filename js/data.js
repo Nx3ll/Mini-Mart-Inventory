@@ -21,15 +21,31 @@ const DB = {
 // Store details. Change the name here and it updates on every page.
 const STORE = {
   name: 'MN Sari',
-  tagline: 'Your local store as your market'
+  tagline: 'Your local store as your market',
+  logo: 'images/logo.png'
 };
 
-// Demo staff accounts
-const USERS = [
+// Default staff accounts
+const DEFAULT_USERS = [
   { username: 'ana',   password: '1234', name: 'Ana',   role: 'cashier' },
   { username: 'ben',   password: '1234', name: 'Ben',   role: 'clerk'   },
   { username: 'owner', password: '1234', name: 'Owner', role: 'manager' }
 ];
+
+// Get all staff accounts (stored in browser)
+function users() {
+  let list = DB.get('users');
+  if (!list) {
+    list = DEFAULT_USERS.map(function (u) { return { ...u }; });
+    DB.set('users', list);
+  }
+  return list;
+}
+
+// Save the staff account list
+function saveUsers(list) {
+  DB.set('users', list);
+}
 
 // Filipino greeting that matches the time of day
 function greeting() {

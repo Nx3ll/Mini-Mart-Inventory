@@ -8,7 +8,8 @@ if (currentUser()) {
 // Show the store name and logo
 document.getElementById('store-name').textContent = STORE.name;
 document.getElementById('store-tagline').textContent = STORE.tagline;
-document.getElementById('logo').textContent = STORE.name.charAt(0);
+document.getElementById('logo').src = STORE.logo;
+document.getElementById('logo').alt = STORE.name + ' logo';
 document.title = 'Log in · ' + STORE.name;
 
 // Page elements

@@ -331,22 +331,21 @@ a:focus-visible {
 }
 
 .logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
+  display: inline-block;
   height: 36px;
-  background: #000;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  border: 2px solid #000;
+  background: #fff;
+  padding: 2px;
 }
 
 .login .logo {
-  width: 48px;
-  height: 48px;
+  height: 56px;
+  width: auto;
+  max-width: 180px;
   margin-bottom: 12px;
-  font-size: 28px;
 }
 
 .sub {

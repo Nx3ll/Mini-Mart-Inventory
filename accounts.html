@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Accounts · Mini-mart</title>
+  </head>
+  <body>
+    <!-- Menu (filled in by app.js) -->
+    <nav class="nav" id="nav"></nav>
+    <main class="page">
+      <div class="hdr">
+        <h1>Staff accounts</h1>
+      </div>
+
+      <!-- Create new account form -->
+      <section class="card">
+        <h2>Create new account</h2>
+        <form id="createAccountForm">
+          <div class="form-row">
+            <div>
+              <label class="lbl" for="accName">Display name</label>
+              <input class="in" type="text" id="accName" required>
+            </div>
+            <div>
+              <label class="lbl" for="accUsername">Username</label>
+              <input class="in" type="text" id="accUsername" autocomplete="off" required>
+            </div>
+            <div>
+              <label class="lbl" for="accRole">Role</label>
+              <select class="in" id="accRole" required>
+                <option value="cashier">Cashier (Sales & Inventory)</option>
+                <option value="clerk">Stock clerk (Stock In, Reorder & Suppliers)</option>
+                <option value="manager">Owner / Manager (Full access)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row end">
+            <div>
+              <label class="lbl" for="accPassword">Password</label>
+              <input class="in" type="password" id="accPassword" required>
+            </div>
+            <div>
+              <label class="lbl" for="accConfirm">Confirm password</label>
+              <input class="in" type="password" id="accConfirm" required>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-block">+ Create account</button>
+            </div>
+          </div>
+        </form>
+        <div id="statusMsg" class="status-msg" role="status"></div>
+      </section>
+
+      <!-- Existing accounts table -->
+      <section>
+        <h2>Existing accounts</h2>
+        <div class="wrap">
+          <table class="t wide">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="accountsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/accounts.js"></script>
+  </body>
+</html>

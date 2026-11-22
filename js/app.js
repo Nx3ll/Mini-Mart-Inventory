@@ -18,14 +18,15 @@ const PAGES = [
   { name: 'Reorder',      href: 'reorder.html',      roles: ['clerk', 'manager'] },
   { name: 'Suppliers',    href: 'suppliers.html',    roles: ['clerk', 'manager'] },
   { name: 'Reports',      href: 'reports.html',      roles: ['manager'] },
-  { name: 'Activity Log', href: 'activity-log.html', roles: ['manager'] }
+  { name: 'Activity Log', href: 'activity-log.html', roles: ['manager'] },
+  { name: 'Accounts',     href: 'accounts.html',     roles: ['manager'] }
 ];
 
 // Who is logged in (or null)
 function currentUser() {
   const username = DB.get('session');
   if (!username) return null;
-  return USERS.find(function (user) { return user.username === username; }) || null;
+  return users().find(function (user) { return user.username === username; }) || null;
 }
 
 // Can this person open this page?
@@ -60,7 +61,7 @@ function requireLogin() {
 // Check username and password
 function login(username, password) {
   const cleanName = username.trim().toLowerCase();
-  const user = USERS.find(function (u) {
+  const user = users().find(function (u) {
     return u.username === cleanName && u.password === password;
   });
 
@@ -107,7 +108,7 @@ function renderNav(activePage) {
     .join('');
 
   document.getElementById('nav').innerHTML =
-    '<span class="brand"><span class="logo">' + esc(STORE.name.charAt(0)) + '</span><b>' + esc(STORE.name) + '</b></span>' +
+    '<span class="brand"><img class="logo" src="' + esc(STORE.logo) + '" alt="' + esc(STORE.name) + ' logo"><b>' + esc(STORE.name) + '</b></span>' +
     links +
     '<span class="who">' + esc(user.name) + ' · ' + ROLES[user.role] +
     '<a href="#" id="logout-link">Log out</a></span>';
