@@ -17,3 +17,5 @@ Demo logins (password 1234): ana = cashier, ben = stock clerk, owner = manager.
 
 ## Storage keys (all start with mm_)
 items, sales, suppliers, log, stockin, eload, session
+
+readme legit lng
