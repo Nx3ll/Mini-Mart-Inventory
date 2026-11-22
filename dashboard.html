@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Dashboard · Mini-mart</title>
+  </head>
+  <body>
+    <!-- Menu (filled in by app.js) -->
+    <nav class="nav" id="nav"></nav>
+    <main class="page">
+      <div class="hdr">
+        <h1>Dashboard</h1>
+        <div class="acts" id="quick-buttons"></div>
+      </div>
+      <!-- Number cards -->
+      <div class="grid3">
+        <div class="card">
+          <div class="lbl">Sales today</div>
+          <div class="big" id="sales-today"></div>
+        </div>
+        <div class="card">
+          <div class="lbl">Low stock</div>
+          <div class="big" id="low-count"></div>
+        </div>
+        <div class="card">
+          <div class="lbl">Expiring in 30 days</div>
+          <div class="big" id="expiring-count"></div>
+        </div>
+      </div>
+      <!-- Two tables -->
+      <div class="cols">
+        <section>
+          <h2>Low stock</h2>
+          <div class="wrap">
+            <table class="t">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Left</th>
+                  <th>Reorder at</th>
+                </tr>
+              </thead>
+              <tbody id="low-rows"></tbody>
+            </table>
+          </div>
+        </section>
+        <section>
+          <h2>Expiring soon</h2>
+          <div class="wrap">
+            <table class="t">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Expires</th>
+                  <th>Left</th>
+                </tr>
+              </thead>
+              <tbody id="expiring-rows"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

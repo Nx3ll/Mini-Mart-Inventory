@@ -1,80 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Mini-mart — Stock in</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="navbar">
-    <div class="nav-left">
-      <span class="brand">Mini-mart</span>
-      <nav class="nav-links">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="inventory.html">Inventory</a>
-        <a href="sales.html">Sales</a>
-        <a href="stock-in.html" class="active">Stock In</a>
-        <a href="reorder.html">Reorder</a>
-        <a href="reports.html">Reports</a>
-        <a href="activity-log.html">Activity Log</a>
-        <a href="eload.html">E-load / GCash</a>
-      </nav>
-    </div>
-    <div class="nav-right" id="userDisplay">Ana · Cashier</div>
-  </header>
-
-  <main class="container">
-    <h1>Stock in</h1>
-
-    <div class="stockin-form-row">
-      <!--ITEM-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Stock in · Mini-mart</title>
+  </head>
+  <body>
+    <!-- Menu (filled in by app.js) -->
+    <nav class="nav" id="nav"></nav>
+    <main class="page">
+      <h1>Stock in</h1>
       <div>
-        <label class="field-label" for="itemSelect">ITEM</label>
-        <select id="itemSelect"></select>
+        <!-- Pick item, quantity and supplier -->
+        <div class="form-row">
+          <div>
+            <label class="lbl" for="itemSelect">Item</label>
+            <select class="in" id="itemSelect"></select>
+          </div>
+          <div>
+            <label class="lbl" for="qtyInput">Quantity received</label>
+            <input class="in" type="number" id="qtyInput" min="1" value="1">
+          </div>
+          <div>
+            <label class="lbl" for="supplierSelect">Supplier</label>
+            <select class="in" id="supplierSelect"></select>
+          </div>
+        </div>
+        <button type="button" class="btn" id="addDeliveryBtn">+ Add to delivery</button>
       </div>
-
-      <!-- QUANTITY RECEIVED -->
+      <!-- Items in this delivery -->
+      <section>
+        <h2>This delivery</h2>
+        <div class="wrap">
+          <table class="t">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Unit</th>
+                <th>Supplier</th>
+                <th>Expiry</th>
+              </tr>
+            </thead>
+            <tbody id="deliveryTableBody"></tbody>
+          </table>
+        </div>
+      </section>
       <div>
-        <label class="field-label" for="qtyInput">QUANTITY RECEIVED</label>
-        <input type="number" id="qtyInput" min="1" value="1">
+        <button type="button" class="btn" id="confirmDeliveryBtn">Confirm delivery</button>
+        <div id="statusMsg" class="status-msg" role="status"></div>
       </div>
-
-      <!-- SUPPLIER -->
-      <div>
-        <label class="field-label" for="supplierSelect">SUPPLIER</label>
-        <select id="supplierSelect"></select>
-      </div>
-    </div>
-
-    <button type="button" class="btn btn-primary" id="addDeliveryBtn">+ Add to delivery</button>
-
-    <div style="margin-top: 28px;">
-      <h2>This delivery</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ITEM</th>
-            <th>QTY</th>
-            <th>UNIT</th>
-            <th>SUPPLIER</th>
-            <th>EXPIRY</th>
-          </tr>
-        </thead>
-        <tbody id="deliveryTableBody">
-          <tr>
-            <td colspan="5" class="empty-msg">No items queued for delivery.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div style="margin-top: 20px;">
-      <button type="button" class="btn btn-primary" id="confirmDeliveryBtn">Confirm delivery</button>
-    </div>
-
-    <div id="statusMsg" class="status-msg"></div>
-  </main>
-
-  <script src="stock-in.js"></script>
-</body>
+    </main>
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/stock-in.js"></script>
+  </body>
 </html>

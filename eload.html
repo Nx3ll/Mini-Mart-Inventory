@@ -1,116 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Mini-mart — E-load / GCash</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="navbar">
-    <div class="nav-left">
-      <span class="brand">Mini-mart</span>
-      <nav class="nav-links">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="inventory.html">Inventory</a>
-        <a href="sales.html">Sales</a>
-        <a href="stock-in.html">Stock In</a>
-        <a href="reorder.html">Reorder</a>
-        <a href="suppliers.html">Suppliers</a>
-        <a href="reports.html">Reports</a>  
-        <a href="activity-log.html">Activity Log</a>
-        <a href="eload.html" class="active">E-load / GCash</a>
-      </nav>
-    </div>
-    <div class="nav-right" id="userDisplay">Ana · Cashier</div>
-  </header>
-
-  <main class="container">
-    <h1>E-load / GCash</h1>
-
-    <div class="stockin-form-row">
-      <div class="total-sales-box">
-        <div class="field-label">GCASH WALLET BALANCE</div>
-        <div class="total-sales-amount" id="gcashBalance">₱0</div>
-      </div>
-      <div class="total-sales-box">
-        <div class="field-label">E-LOAD RETAILER WALLET</div>
-        <div class="total-sales-amount" id="eloadBalance">₱0</div>
-      </div>
-      <div class="total-sales-box">
-        <div class="field-label">SERVICE FEES EARNED</div>
-        <div class="total-sales-amount" id="feesEarned">₱0</div>
-      </div>
-    </div>
-
-    <div class="cart-box" style="margin-bottom: 24px;">
-      <h2>Manual wallet update</h2>
-      <div class="stockin-form-row" style="margin-bottom: 0; align-items: end;">
-        <div>
-          <label class="field-label" for="walletSelect">WALLET</label>
-          <select id="walletSelect">
-            <option value="gcash">GCash Wallet</option>
-            <option value="eload">E-load Retailer Wallet</option>
-          </select>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <title>E-load / GCash · Mini-mart</title>
+  </head>
+  <body>
+    <!-- Menu (filled in by app.js) -->
+    <nav class="nav" id="nav"></nav>
+    <main class="page">
+      <h1>E-load / GCash</h1>
+      <!-- Balances and fees -->
+      <div class="grid3">
+        <div class="card">
+          <div class="lbl">GCash wallet balance</div>
+          <div class="big" id="gcashBalance">₱0</div>
         </div>
-        <div>
-          <label class="field-label" for="newWalletAmount">CURRENT BALANCE (₱)</label>
-          <input type="number" id="newWalletAmount" placeholder="0" min="0">
+        <div class="card">
+          <div class="lbl">E-load retailer wallet</div>
+          <div class="big" id="eloadBalance">₱0</div>
         </div>
-        <div>
-          <button type="button" class="btn btn-primary btn-block" style="height: 40px;" id="updateWalletBtn">Update balance</button>
+        <div class="card">
+          <div class="lbl">Service fees earned</div>
+          <div class="big" id="feesEarned">₱0</div>
         </div>
       </div>
-    </div>
-
-    <div class="sales-layout">
-      <div>
-        <h2>Recent transactions</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>TYPE</th>
-              <th>MOBILE NO.</th>
-              <th>AMOUNT</th>
-              <th>FEE</th>
-            </tr>
-          </thead>
-          <tbody id="txTableBody"></tbody>
-        </table>
+      <!-- Update a wallet by hand -->
+      <section class="card">
+        <h2>Manual wallet update</h2>
+        <div class="form-row end">
+          <div>
+            <label class="lbl" for="walletSelect">Wallet</label>
+            <select class="in" id="walletSelect">
+              <option value="gcash">GCash Wallet</option>
+              <option value="eload">E-load Retailer Wallet</option>
+            </select>
+          </div>
+          <div>
+            <label class="lbl" for="newWalletAmount">Current balance (₱)</label>
+            <input class="in" type="number" id="newWalletAmount" placeholder="0" min="0">
+          </div>
+          <div>
+            <button type="button" class="btn btn-block" id="updateWalletBtn">Update balance</button>
+          </div>
+        </div>
+      </section>
+      <!-- Transactions (left) and new transaction (right) -->
+      <div class="sales-layout">
+        <section>
+          <h2>Recent transactions</h2>
+          <div class="wrap">
+            <table class="t">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Mobile no.</th>
+                  <th>Amount</th>
+                  <th>Fee</th>
+                </tr>
+              </thead>
+              <tbody id="txTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="card">
+          <h2>Record transaction</h2>
+          <div class="field">
+            <label class="lbl" for="txType">Service type</label>
+            <select class="in" id="txType">
+              <option value="GCash Cash-In">GCash Cash-In (deducts GCash)</option>
+              <option value="GCash Cash-Out">GCash Cash-Out (adds to GCash)</option>
+              <option value="E-load">E-load (deducts load wallet)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="lbl" for="mobileInput">Customer mobile no. (<span id="digitCounter">0/11</span>)</label>
+            <input class="in" type="text" id="mobileInput" placeholder="09XXXXXXXXX" maxlength="11" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label class="lbl" for="amountInput">Amount (₱)</label>
+            <input class="in" type="number" id="amountInput" placeholder="100" min="1">
+          </div>
+          <div class="field">
+            <label class="lbl" for="feeInput">Service fee (₱)</label>
+            <input class="in" type="number" id="feeInput" value="10" min="0">
+          </div>
+          <button type="button" class="btn btn-block" id="recordTxBtn">Record transaction</button>
+          <div id="statusMsg" class="status-msg" role="status"></div>
+        </section>
       </div>
-
-      <div class="cart-box">
-        <h2>Record transaction</h2>
-
-        <div style="margin-bottom: 12px;">
-          <label class="field-label" for="txType">SERVICE TYPE</label>
-          <select id="txType">
-            <option value="GCash Cash-In">GCash Cash-In (deducts GCash)</option>
-            <option value="GCash Cash-Out">GCash Cash-Out (adds to GCash)</option>
-            <option value="E-load">E-load (deducts load wallet)</option>
-          </select>
-        </div>
-
-        <div style="margin-bottom: 12px;">
-          <label class="field-label" for="mobileInput">CUSTOMER MOBILE NO. (<span id="digitCounter">0/11</span>)</label>
-          <input type="text" id="mobileInput" placeholder="09XXXXXXXXX" maxlength="11">
-        </div>
-
-        <div style="margin-bottom: 12px;">
-          <label class="field-label" for="amountInput">AMOUNT (₱)</label>
-          <input type="number" id="amountInput" placeholder="100" min="1">
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <label class="field-label" for="feeInput">SERVICE FEE (₱)</label>
-          <input type="number" id="feeInput" value="10" min="0">
-        </div>
-
-        <button type="button" class="btn btn-primary btn-block" id="recordTxBtn">Record transaction</button>
-        <div id="statusMsg" class="status-msg"></div>
-      </div>
-    </div>
-  </main>
-
-  <script src="eload.js"></script>
-</body>
+    </main>
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/eload.js"></script>
+  </body>
 </html>

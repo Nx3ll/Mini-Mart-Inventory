@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Log in · Mini-mart</title>
+  </head>
+  <body>
+    <main class="login">
+      <div class="card">
+        <div>
+          <h1>Mini-mart</h1>
+          <div class="note">Staff login</div>
+        </div>
+        <!-- Error message (hidden until login fails) -->
+        <div id="error" class="err" role="alert">Wrong username or password.</div>
+        <div>
+          <label class="lbl" for="username">Username</label>
+          <input class="in" id="username" autocomplete="username">
+        </div>
+        <div>
+          <label class="lbl" for="password">Password</label>
+          <input class="in" id="password" type="password" autocomplete="current-password">
+        </div>
+        <button class="btn" id="login-button">Log in</button>
+        <div class="note">Staff only. Your role decides which pages you can open.<br>Demo accounts: ana (cashier), ben (stock clerk), owner (manager). Password: 1234</div>
+      </div>
+    </main>
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
